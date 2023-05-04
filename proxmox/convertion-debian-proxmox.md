@@ -4,7 +4,7 @@ description: Ici nous convertirons votre Debian en Proxmox
 
 # ↔ Conversion Debian Proxmox
 
-## Ajout des dépôts APT Proxmox&#x20;
+## Ajout des dépôts APT Proxmox
 
 ```bash
 echo "deb [arch=amd64] http://download.proxmox.com/debian/pve bullseye pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
@@ -22,7 +22,7 @@ apt update && apt full-upgrade -y
 
 ## Puis on ajoute le noyau PVE
 
-Ici on change le noyau d'origine de Debian par celui de Proxmox. Ce noyau intègre KVM (*Kernel Virtual Machine*) qui est beaucoup plus performant qu'une machine virtuelle classique (comme Virtualbox) et qui est indispensable pour Proxmox.
+Ici on change le noyau d'origine de Debian par celui de Proxmox. Ce noyau intègre KVM (_Kernel Virtual Machine_) qui est beaucoup plus performant qu'une machine virtuelle classique (comme Virtualbox) et qui est indispensable pour Proxmox.
 
 En effet, les logiciels qui proposent de créer des machines virtuelles comme Virtualbox sont appelées Hyperviseur de Type 2. Alors que KVM utilisé par Proxmox est un hyperviseur de Type 1. Ces derniers sont bien plus performants et stables.
 
@@ -46,7 +46,7 @@ apt install proxmox-ve postfix open-iscsi -y
 ```
 
 {% hint style="danger" %}
-Pendant l'installation, une erreur peut survenir car proxmox est entrain de réinstaller les pilotes réseaux. Il est donc vivement conseillé d'exécuter cette commande directement sur la machine et non via SSH, autrement vous serez déconnecter pendant le redémarrage des cartes réseaux.
+Pendant l'installation, une erreur peut survenir car proxmox est entrain de réinstaller les pilotes réseaux. Il est donc vivement conseillé d'exécuter cette commande directement sur la machine et non via SSH, autrement vous serez déconnécté pendant le redémarrage des cartes réseaux.
 {% endhint %}
 
 ## Suppression des anciens noyaux Linux
