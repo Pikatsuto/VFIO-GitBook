@@ -1,5 +1,5 @@
 ---
-description: Ici nous configuront votre bios pour pouvoir faire notre GPU passthrough
+description: Ici nous configurons votre bios pour pouvoir faire notre GPU passthrough
 ---
 
 # ⚙ Configuration
