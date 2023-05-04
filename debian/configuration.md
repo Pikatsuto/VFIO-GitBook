@@ -39,7 +39,7 @@ Mise à jour du système :
 apt update && apt upgrade -y
 ```
 
-Nous ajoutons en premier le package `sudo` et ajoutons notre compte utilisateur.
+Nous ajoutons en premier le package `sudo` et nous y ajoutons notre compte utilisateur.
 
 ```bash
 UTILISATEUR=gabriel
