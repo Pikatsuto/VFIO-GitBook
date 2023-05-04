@@ -1,24 +1,23 @@
 ---
 description: >-
-  Ici nous configuron votre debian car il nous manque pas mal de chose pour
-  avoir un proxmox propre
+  Ici nous configurons votre Debian pour avoir un Proxmox propre
 ---
 
 # ⚙ Configuration
 
 ## Network
 
-### source.list
+### sources.list
 
-Pour commancer comme dans toute bonne installation linux nous configuron les dépot et appliquon les mis a jours
+Pour commencer comme dans toute bonne installation Linux, nous configurons les dépôts APT et appliquons les mises à jour.
 
-Pour commencer on pass en root car sudo n'est pas présent par défaut sur debian
+Pour commencer nous passons sur le compte root car sudo n'est pas présent par défaut sur Debian.
 
 ```bash
 su -
 ```
 
-on mets a jours les dépot
+Mise à jour de la liste des dépôts :
 
 ```bash
 echo "deb http://deb.debian.org/debian bullseye main contrib non-free
@@ -34,13 +33,13 @@ deb http://deb.debian.org/debian  bullseye-backports main contrib non-free
 deb-src http://deb.debian.org/debian  bullseye-backports main contrib non-free" > /etc/apt/sources.list
 ```
 
-puis les mis a jours du system
+Mise à jour du système :
 
 ```bash
 apt update && apt upgrade -y
 ```
 
-on ajoute d'aufice sudo avant de passer au reste
+Nous ajoutons en premier le package `sudo` et ajoutons notre compte utilisateur.
 
 ```bash
 UTILISATEUR=gabriel
@@ -51,10 +50,10 @@ echo "$UTILISATEUR ALL=(ALL) PASSWD: ALL" > /etc/sudoers.d/$UTILISATEUR
 
 ### Networking
 
-Ici nous allons configuré les carte réseaux de magnière temporaire pour ne pas pérdre la connexion durent l'installation car proxmox change les packet réseaux
+Ici nous allons configurer les cartes réseaux de manière temporaire pour ne pas perdre la connexion durant l'installation.
 
 {% hint style="danger" %}
-Attention cette étape est indispensable si vous ne la faite pas l'installation de votre proxmox vas casser votre system donc vous cerez obliger de repasser par la case formatage
+**Attention**, cette étape est indispensable. Si cette dernière est ignorée l'installation de Proxmox endommagera de manière irréversible le système d'exploitation et une réinstallation complète sera alors nécessaire.
 {% endhint %}
 
 ```bash
@@ -73,7 +72,7 @@ iface ${serverInterface} inet dhcp
 ### Changement du domaine local
 
 {% hint style="warning" %}
-importance ici c'est une dépendence de proxmox
+**Important** : C'est une dépendance de Proxmox.
 {% endhint %}
 
 ```bash
@@ -85,7 +84,7 @@ sed -i "s/${hostname}/${hostname}.local ${hostname}/g" /etc/hosts
 hostname --ip-address
 ```
 
-puis on reboot
+Redémarrage
 
 ```bash
 sudo reboot

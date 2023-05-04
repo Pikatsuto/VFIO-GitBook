@@ -1,25 +1,25 @@
 ---
 description: >-
-  La nous paramétron votre proxmox pour le VFIO car il y a des modifiquation
-  GRUB et module faire pour ceci
+  Sur cette page, nous paramétrons Proxmox pour le VFIO qui nécessite des modifications
+  GRUB et modules.
 ---
 
 # ⚙ Paramétrage de Proxmox
 
-## Module et démarage
+## Modules et démarrage
 
 ### **Activer l'IOMMU**
 
-Ici nous ajoutons l'IOMMU dans la config grub pour l'avoir au démarage de l'ordinateur car cette fonction est indispensable au VFIO (passage d'un composant physique a une machine virtuel)
+Ici nous ajoutons l'IOMMU dans la config GRUB pour l'ajouter au menu de démarrage de l'ordinateur. Cette fonction est indispensable au VFIO (passage d'un composant physique à une machine virtuelle).
 
 ```bash
 sed -i -e 's/quiet/quiet amd_iommu=on initcall_blacklist=sysfb_init/g' /etc/default/grub;
 update-grub;
 ```
 
-### Puis on active les module
+### Puis on active les modules
 
-Ici nous activons des module au démarage qui sont tout aussi indispensable pour un GPU passthrough d'ailleur l'IOMMU en fait aussi partie
+Ici nous activons des modules au démarrage qui sont également indispensables pour le GPU passthrough dont l'IOMMU en fait partie.
 
 ```bash
 echo "vfio
@@ -28,18 +28,18 @@ vfio_pci
 vfio_virqfd" > /etc/modules
 ```
 
-### encore la même chose pour KVM
+### Même chose pour KVM
 
 ```bash
 echo "options vfio_iommu_type1 allow_unsafe_interrupts=1" > /etc/modprobe.d/iommu_unsafe_interrupts.conf;
 echo "options kvm ignore_msrs=1" > /etc/modprobe.d/kvm.conf;
 ```
 
-### On blacklist les pilote graphique
+### On blackliste les pilotes graphiques
 
-ici nous blacklistion les pilote graphique car sinon il y a de forte change que vous ayller des bug d'atrubution avec vos carte graphique entre votre proxmox et vos machine virtuel
+Ici nous excluons les pilotes graphiques pour éviter des problèmes d'attributions des cartes graphiques entre Proxmox et les machines virtuelles.
 
-pour les GPU PCI Express
+Pour les GPU PCI Express :
 
 ```bash
 echo "blacklist amdgpu"         > /etc/modprobe.d/blacklist.conf;
@@ -49,7 +49,7 @@ echo "blacklist radeon"        >> /etc/modprobe.d/blacklist.conf;
 echo "blacklist snd_hda_intel" >> /etc/modprobe.d/blacklist.conf;
 ```
 
-&#x20;si vous avez un igpu amd
+&#x20;si vous avez un iGPU AMD
 
 ```bash
 echo "blacklist ccp"           >> /etc/modprobe.d/blacklist.conf;
@@ -58,13 +58,13 @@ echo "blacklist xhci_hcd"      >> /etc/modprobe.d/blacklist.conf;
 
 ### Puis attribuer vos GPU en VFIO&#x20;
 
-ici vous devez chercher l'identifiant de vos GPU pour ça on vas taper la première commande pour lister vos carte graphique\
+Ici vous devez chercher l'identifiant de vos GPU. Pour cela, nous tapons la première commande pour lister les cartes graphiques.\
 \
-un fois cette liste faite on vas allez chercher leur code d'identifiquation 1 par 1 grace a la première commande
+Une fois cette liste obtenue, on va allez chercher leur code d'identification un par un, grâce a la première commande.
 
-dans cette éxemple nous voyons 03:00.0 donc pour la recherche nous allons couper a partire du point ce qui donne 03:00 pour la 2e command
+Dans cet exemple, nous voyons `03:00.0`. Pour la recherche, nous ne prenons en compte que la partie avant le `.` ce qui nous donne `03:00` pour la deuxième commande.
 
-attention pour le 09:00 de mon coté j'ai beaucoup trop de slot pcie et c'est car j'utilise un IGPU (la partie graphique intégrer a mon prosseceu) dans ce cas de figure il est plus simple de revenire sur cette étape plus tard car proxmox nous présise le quel est le quel dans l'interface
+**Attention** : Dans les images d'illustration, j'ai utilisé `09:00` car l'iGPU (utilisé dans mon cas) produit beaucoup trop de slot PCIe. Dans ce cas de figure, il est plus simple de réaliser cette étape plus car Proxmox précise quelle adresse de PCI utiliser sur l'interface d'administration.
 
 <pre class="language-bash"><code class="lang-bash">lspci | grep VGA
 #03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 23 (rev c7)
@@ -75,7 +75,7 @@ lspci -n -s 03:00
 <strong>#03:00.0 0300: 1002:73ff (rev c7)     &#x3C;== Video
 </strong>#03:00.1 0403: 1002:ab28              &#x3C;== Audio
 
-# AMD IGPU: Vega intégrer au Ryzen 7 5700G
+# AMD iGPU: Vega intégré au Ryzen 7 5700G
 lspci -n -s 09:00
 #09:00.0 0300: 1002:1638 (rev c8)     &#x3C;== Video
 #09:00.1 0403: 1002:1637              &#x3C;== Video

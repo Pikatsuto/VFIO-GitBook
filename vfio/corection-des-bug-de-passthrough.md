@@ -1,16 +1,17 @@
 ---
 description: >-
-  Ici votre igpu ne fonctionera pas tout de suite et cecis est aussi valable
-  pour des carte graphique un peut plus ancien donc voici le fix
+  Ici votre iGPU ne fonctionnera pas tout de suite et ainsi que 
+  pour des cartes graphiques plus anciennes donc voici comment 
+  corriger ce problème.
 ---
 
-# 🔧 Coréction des bug de passthrough
+# 🔧 Correction des bugs de passthrough
 
 ## Récupération de votre VBIOS
 
-ici on vas clone le bios de votre carte graphque qui peut poser problème en physique
+Ici nous allons cloner le bios de votre carte graphique qui peut poser un problème en physique
 
-donc pour ceci on récupère l'id de votre carte graphique
+donc pour se faire on récupère l'id de votre carte graphique :
 
 ```bash
 lspci | grep VGA
@@ -18,7 +19,7 @@ lspci | grep VGA
 #09:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne (rev c8)
 ```
 
-puis le clone du bios
+puis on clone le bios :
 
 ```bash
 PCIEID=09:00.0
@@ -33,7 +34,7 @@ cat $PATH_TO_ROM > /usr/share/kvm/gpu.rom
 echo 0 > $PATH_TO_ROM
 ```
 
-## Attribution du VBIOS a la VM et fix du processeur
+## Attribution du VBIOS à la VM et correction du processeur
 
 Changer VMID par celui de votre VM
 
@@ -46,7 +47,7 @@ sed -i "s/cpu: host/cpu: host,hidden=1/g" /etc/pve/qemu-server/${VMID}.conf
 sed -i "s/,x-vga=1/,x-vga=1,romfile=gpu.rom/g" /etc/pve/qemu-server/${VMID}.conf
 ```
 
-et dans mon cas mon igpu a un 2e slot graphique au millieu des autre donc j'ajouté ceci (penser a changer PCIEIDADD par votre valeur
+Dans mon cas, mon iGPU a un 2e slot graphique au milieu des autres donc j'ajoute ceci (penser à changer PCIEIDADD par votre valeur)
 
 ```bash
 PCIEIDADD=09:00.1

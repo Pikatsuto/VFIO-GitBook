@@ -1,22 +1,22 @@
 ---
-description: Ici nous configuron votre bios pour pouvoir faire notre GPU passthrough
+description: Ici nous configuront votre bios pour pouvoir faire notre GPU passthrough
 ---
 
 # ⚙ Configuration
 
-## Liste des paramètre
+## Liste des paramètres
 
 {% hint style="info" %}
-Si le nom des paramètrte n'est pas identique dans votre bios c'est normal car chaque constructeur sont différent mais il sont toujour reconaissable car les technologie on le même nom les différence sont les abrégé ou non et des mots en plus
+Si le nom des paramètres n'est pas identique dans votre bios c'est normal. Chaque constructeur est différent mais ils sont toujours reconnaissables car les technologies en question ont le même nom. Les différences que vous pouvez observer sont des abréviations pouvant raccourcir ou ajouter des mots.
 {% endhint %}
 
-Ici chaquin a un bos diférent donc je ne peut pas vous montré d'image mais voici la liste des paramètre a changer
+Ici chaque machine a un bios différent donc je ne peux pas vous montrer d'illustration universelle, mais vous trouverez ci-dessous la liste des paramètres à changer :
 
-| Nom                       | Valeur    | Précision                                                                                                                       |
-| ------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| BIOS Mode                 | Advanced  | Pour avoir accès aux settings                                                                                                   |
-| SVM Mode                  | Enable    | Pour avoir la virtualisation (Je recommande également d'activé la VT-X si disponible)                                           |
-| iGPU                      | Force     | Uniquement si vous n'avez pas de deuxième carte graphique et que votre processeur a une puce intégré.                           |
-| IOMMU                     | Enable    | Pour activé la partie VFIO                                                                                                      |
-| iGPU Configuration ou UMA | UMA\_AUTO | Réglages similaire que l'iGPU, a activé que si vous n'avez pas de deuxième GPU et que votre processeur possède une puce intégré |
-| Boot / CSM                | Enable    | Démarrage en Legacy pour la virtualisation                                                                                      |
+| Nom                       | Valeur    | Précision                                                                                                                        |
+|---------------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------|
+| BIOS Mode                 | Advanced  | Pour avoir accès aux paramètres                                                                                                  |
+| SVM Mode                  | Enable    | Pour avoir la virtualisation (Je recommande également d'activer la VT-X si disponible)                                           |
+| iGPU                      | Force     | Uniquement si vous n'avez pas de deuxième carte graphique et que votre processeur a une puce intégrée.                           |
+| IOMMU                     | Enable    | Pour activer la partie VFIO                                                                                                      |
+| iGPU Configuration ou UMA | UMA\_AUTO | Réglage similaire que l'iGPU, à activer que si vous n'avez pas de deuxième GPU et que votre processeur possède une puce intégrée |
+| Boot / CSM                | Enable    | Démarrage en Legacy pour la virtualisation                                                                                       |

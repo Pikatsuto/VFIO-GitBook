@@ -1,23 +1,23 @@
 ---
 description: >-
-  Ici nous installon d'abbord un debian plustot qu'un proxmox pour des raison de
-  stabilité et de propreté
+  Ici nous installons d'abord un Debian plutôt qu'un Proxmox pour des raisons de
+  stabilité et de propreté.
 ---
 
 # 💿 Installation
 
 {% hint style="info" %}
-Ici je par du prinsipe que vous avez déja installer debian en physique sur votre ordinateur mais voici également quelque conceil:
+Ici, je pars du principe que vous savez installer Debian sur une machine physique.
 {% endhint %}
 
 {% hint style="danger" %}
-Vous aurez aubligatoirement besoin d'un autre ordinateur pour accéder a votre ordinateur car nous deverons taper des commande en ssh
+Vous aurez obligatoirement besoin d'un autre ordinateur pour pouvoir vous y connecter en SSH sur la machine Debian nouvellement installée.
 {% endhint %}
 
 ## Partition
 
 {% tabs %}
-{% tab title="Disque Principale" %}
+{% tab title="Disque Principal" %}
 | Nom    | Stockage | Montage   |
 | ------ | -------- | --------- |
 | EFI    | 512M     | /boot/efi |
@@ -29,26 +29,28 @@ Vous aurez aubligatoirement besoin d'un autre ordinateur pour accéder a votre o
 
 {% tab title="Disque Secondaire" %}
 {% hint style="warning" %}
-Attention le formatage de ce si sera dans proxmox
+**Attention** : Le formatage de ce disque se fera depuis Proxmox.
 {% endhint %}
 
 {% hint style="danger" %}
-Si vous faite une configuration multi disque il faut qu'il ai le même stockage et la même vitesse
+Si vous faites une configuration avec plusieurs disque (RAID), il faudra que les disques présent dans la même grappe aient la même taille (et la même vitesse).
 {% endhint %}
 
 | Partitionement | Nombre de Disque | Type         |
-| -------------- | ---------------- | ------------ |
+|----------------|------------------|--------------|
 | ZFS            | 2-3              | RAID Mirroir |
 | ZFS            | 4-6              | RAID 5       |
 | LVM            | 1                | NORAID       |
 {% endtab %}
 {% endtabs %}
 
-### Chois des package en fin d'installation
+### Choix des fonctionnalités en fin d'installation
 
 * SSH Server
-* Utilitaire Usuel
+* Utilitaires Usuels
 
 {% hint style="warning" %}
-Ne choisisez rien d'autre car nous ne pouron plus accéder au debian physique un fois l'installation terminer donc il serais une grosse perte de performance de laisser cocher d'autre chose comme une interface graphique par exemple
+Ne choisissez rien d'autre, car nous ne pourrons plus accéder au Debian physique une fois l'installation de Proxmox terminée.
+
+Laissez l'interface graphique ou tout autres fonctionnalités cochées serait une grosse perte de ressources et de performances.
 {% endhint %}

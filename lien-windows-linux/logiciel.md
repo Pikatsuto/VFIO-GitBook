@@ -1,40 +1,40 @@
 ---
-description: Ici je vous propose des logiciel pour lier windows et linux
+description: Je vous propose des logiciels pour lier Windows et Linux
 ---
 
 # 💽 Logiciel
 
 ## Barrier
 
-je vous propose une vidéo vous éxpliquant commane ajouter barrier pour lier sourie et clavier entre windows et linux
+Je vous propose une vidéo vous expliquant comment ajouter `barrier` pour lier souris et clavier entre Windows et Linux.
 
 {% hint style="info" %}
-Dans notre configuration Windows est serveur et Linux est client
+Dans notre configuration, le Windows est un serveur et le Linux est un client.
 {% endhint %}
 
 {% hint style="info" %}
-Si vous avez des bug lor ce que votre sourie passe de windows a linux vous pouver ajouté une latence de 10 ms qui ne sera éféctive que sur la transition de l'écren windows ver linux donc aucun ratard en jeux et pas de recenti génant
+Si vous avez des bugs lorsque que votre souris passe de Windows à Linux, vous pouvez ajouter une latence de 10 ms qui ne sera effective que sur la transition de l'écran Windows vers Linux donc aucun retard en jeux et pas de ressenti gênant.
 {% endhint %}
 
 {% hint style="info" %}
-il se peut qu'il y est un blockage il sufi de regarder du coté de votre parfeu
+Il se peut qu'il y ait un blocage, il suffit pour cela de regarder du côté de votre pare-feu.
 {% endhint %}
 
 {% embed url="https://youtu.be/EtYOaH7deeo" %}
 
 ## AudioReplay
 
-ici je con conceil ceci c'est du click and connect:\
+Ici je conseille ceci : *c'est du click and connect* \
 [https://audiorelay.net/](https://audiorelay.net/)
 
 ## SAMBA
 
-pour les dossier utilisateur je con conceil samba vous pouvez suivre cette vidéo et ensuite vous changer le "path" par votre dossier home/user sous linux
+Pour les dossiers utilisateurs, je conseille [SAMBA](https://fr.wikipedia.org/wiki/Samba_(informatique)). Vous pouvez suivre la vidéo ci-dessous et ensuite vous changer le "path" par votre dossier `/home/user` sous Linux.
 
-puis il ne vous résetra plus qu'a ajouté votre samba en périférique réseaux sous windows et fait propriété changer le répertoire sur vos dossier utilisateur
+Il ne vous restera qu'à ajouter votre partage SAMBA en périphérique réseau sous Windows et faire : Propriétés > Changer le répertoire sur vos dossiers utilisateur.
 
 {% hint style="info" %}
-vous pouvez zapé la partie fstab et mount car vous n'en aurez pas besoin
+Vous pouvez ignorer la partie `fstab` et `mount` car vous n'en aurez pas besoin.
 {% endhint %}
 
 {% embed url="https://youtu.be/sTZTvsff0DI" %}

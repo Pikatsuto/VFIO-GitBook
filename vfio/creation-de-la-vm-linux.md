@@ -1,5 +1,5 @@
 ---
-description: Ici nous créons votre VM linux en passthrough
+description: Ici nous créerons votre VM linux en passthrough
 ---
 
 # 🖥 Création de la VM Linux
@@ -7,24 +7,25 @@ description: Ici nous créons votre VM linux en passthrough
 ## Configuration de la machine
 
 {% hint style="warning" %}
-Pour votre interface graphique Gomne et KDE sont déconceigler car ne fonctione pas parfaitement avec barrier qui nous permetera de lier windows et linux
+Pour les interfaces graphiques Gnome et KDE sont déconseillées, car elles ne fonctionnent pas parfaitement avec `barrier` qui nous permet de lier Windows et Linux.
 {% endhint %}
 
 {% hint style="info" %}
-Je vous déconceil de mettre un mots de passe car ce cera gènant pour la liéson windows linux notament pour votre clavier quand vous alez taper votre mots de passe
+Je vous déconseille de mettre un mot de passe car cela sera gênant pour la liaison Windows-Linux. Notamment au moment de taper votre mot de passe.
 {% endhint %}
 
 {% hint style="danger" %}
-Celon votre IGPU la vm linux peut aussi avoir besoin de votre GPU donc comme Linux cera votre VM principale nous allons luis réserver le PCIE son de votre GPU comme paliatif et on utilisera ensuite un logiciel pour lier une carte son virtuel de votre windows sur votre linux
+Selon votre iGPU la machine virtuelle Linux peut aussi nécessiter votre GPU. Comme Linux sera votre VM principale, nous allons lui réserver dans un premier la carte son intégrée au GPU. Puis dans un second temps, la lier avec une carte son virtuelle générée par un logiciel installé sur la machine Windows.
 {% endhint %}
 
-ici je concidère que vous savez créer une VM proxmox mais voici la configuration optimale
+Ici, je considère que vous savez comment créer une VM proxmox, mais voici la configuration optimale.
 
-il est important aussi de faire votre installation windows sans votre passthrue car vous pouvez être géné par l'installation automatique des pilote
+Il est important aussi de faire votre installation Windows sans votre passthrough car vous pouvez être gêné par l'installation automatique des pilotes.
 
 {% hint style="warning" %}
-sur les carte graphque en ajoutant les pcie penser a cocher ROM BAR, PCI-Express et Primary GPU\
-pour les carte audio seulement ROM BAR et PCI-Express
+Quand vous ajoutez les PCIe pour les cartes graphiques, n'oubliez pas de cocher `ROM BAR`, `PCI-Express` et `Primary GPU`.
+
+Quant aux cartes audios, cochez seulement `ROM BAR` et `PCI-Express`.
 {% endhint %}
 
 {% tabs %}
@@ -34,7 +35,7 @@ pour les carte audio seulement ROM BAR et PCI-Express
 | OS            | Linux     |
 | Machine       | Q35       |
 | Disque        | VirtIO    |
-| Carte réseaux | VirtIO    |
+| Carte réseau  | VirtIO    |
 | CPU Mode      | Host      |
 | BIOS          | OVMF UEFI |
 {% endtab %}
@@ -46,7 +47,7 @@ pour les carte audio seulement ROM BAR et PCI-Express
 {% endtab %}
 
 {% tab title="Post Installation" %}
-| Nom             | Valeur                              | Présision |
+| Nom             | Valeur                              | Précision |
 | --------------- | ----------------------------------- | --------- |
 | Carte Graphique | None                                |           |
 | USB             | Tous vos USB sauf souris et clavier |           |

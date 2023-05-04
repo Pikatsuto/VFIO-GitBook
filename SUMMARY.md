@@ -11,14 +11,14 @@
 
 ## 🖥 Proxmox
 
-* [↔ Convertion Debian Proxmox](proxmox/convertion-debian-proxmox.md)
+* [↔ Conversion Debian Proxmox](proxmox/convertion-debian-proxmox.md)
 
 ## ⚒ VFIO
 
 * [⚙ Paramétrage de Proxmox](vfio/parametrage-de-proxmox.md)
 * [🖥 Création de la VM Windows](vfio/creation-de-la-vm-windows.md)
 * [🖥 Création de la VM Linux](vfio/creation-de-la-vm-linux.md)
-* [🔧 Coréction des bug de passthrough](vfio/corection-des-bug-de-passthrough.md)
+* [🔧 Correction des bugs de passthrough](vfio/corection-des-bug-de-passthrough.md)
 
 ## 🔗 Lien Windows Linux
 
