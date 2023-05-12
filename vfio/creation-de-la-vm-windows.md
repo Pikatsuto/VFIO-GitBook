@@ -43,7 +43,7 @@ Quant aux cartes audios, cochez seulement `ROM BAR` et `PCI-Express`.
 | BIOS          | OVMF UEFI  |
 {% endtab %}
 
-{% tab title="Instalation" %}
+{% tab title="Installation" %}
 | Nom             | Valeur |
 | --------------- | ------ |
 | Carte Graphique | VirtIO |
