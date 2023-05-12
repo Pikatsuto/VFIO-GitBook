@@ -30,17 +30,17 @@ Quant aux cartes audios, cochez seulement `ROM BAR` et `PCI-Express`.
 
 {% tabs %}
 {% tab title="Toujours" %}
-| Nom           | Valeur    |
-| ------------- | --------- |
-| OS            | Linux     |
-| Machine       | Q35       |
-| Disque        | VirtIO    |
-| Carte réseau  | VirtIO    |
-| CPU Mode      | Host      |
-| BIOS          | OVMF UEFI |
+| Nom          | Valeur    |
+| ------------ | --------- |
+| OS           | Linux     |
+| Machine      | Q35       |
+| Disque       | VirtIO    |
+| Carte réseau | VirtIO    |
+| CPU Mode     | Host      |
+| BIOS         | OVMF UEFI |
 {% endtab %}
 
-{% tab title="Instalation" %}
+{% tab title="Installation" %}
 | Nom             | Valeur |
 | --------------- | ------ |
 | Carte Graphique | VirtIO |
